@@ -12,6 +12,7 @@ interface TeamEntry {
   spentPurse: number;
   remainingPurse: number;
   players: string[];
+  maxPlayers: number;
 }
 
 interface TeamStore {
