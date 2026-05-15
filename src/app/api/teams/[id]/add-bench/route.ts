@@ -4,10 +4,10 @@ import Team from "@/models/Team";
 import Player from "@/models/Player";
 import AuditLog from "@/models/AuditLog";
 
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     await connectDB();
-    const teamId = params.id;
+    const { id: teamId } = await params;
     const { playerId } = await req.json();
     const adminEmail = req.headers.get("x-user-email") || "admin";
 
